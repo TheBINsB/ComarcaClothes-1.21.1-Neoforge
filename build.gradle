@@ -63,7 +63,7 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 
             systemProperty 'mixin.config', 'comarcaclothes.mixins.json'
-            // ...
+
         }
 
         server {
@@ -125,6 +125,7 @@ configurations {
 }
 
 dependencies {
+
     // Compile against only the API artifact
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
     // Use the full Curios API jar at runtime

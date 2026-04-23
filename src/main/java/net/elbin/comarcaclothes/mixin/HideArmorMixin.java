@@ -17,14 +17,16 @@ import top.theillusivec4.curios.api.CuriosApi;
 public class HideArmorMixin {
 
     @Inject(method = "renderArmorPiece", at = @At("HEAD"), cancellable = true)
-    private void comarcaclothes$hideSpecificHelmet(
+    private void comarcaclothes$hideHelmet(
             PoseStack poseStack, MultiBufferSource buffer, LivingEntity livingEntity,
             EquipmentSlot slot, int packedLight, HumanoidModel<?> model, CallbackInfo ci) {
 
-        if (slot == EquipmentSlot.HEAD) { // Solo interceptamos el renderizado de la cabeza
-            boolean hasDragonSkull = CuriosApi.getCuriosHelper()
-                    .findFirstCurio(livingEntity, ModClothes.Dragon_Skull.get())
-                    .isPresent();
+        if (slot == EquipmentSlot.HEAD) {
+            // USANDO LA API MODERNA:
+            // CuriosApi.getCuriosInventory(entity) es la forma recomendada ahora
+            boolean hasDragonSkull = CuriosApi.getCuriosInventory(livingEntity)
+                    .map(inv -> inv.findFirstCurio(ModClothes.Dragon_Skull.get()).isPresent())
+                    .orElse(false);
 
             if (hasDragonSkull) {
                 ci.cancel();
