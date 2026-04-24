@@ -1,0 +1,111 @@
+package net.elbin.comarcaclothes.client.renderer;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.elbin.comarcaclothes.client.model.*;
+import net.elbin.comarcaclothes.clothes.ModClothes;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.client.ICurioRenderer;
+
+public class CosmeticHeadRenderer implements ICurioRenderer {
+    // Definimos los modelos que vamos a usar
+    private final dragonskull dragonModel;
+    private final christmas_hat christmashatmodel;
+    private final captainhat captainhatmodel;
+    private final cowboyhat cowboyhatmodel;
+    private final crown crownmodel;
+    private final horns hornsmodel;
+    private final sombrero sombreromodel;
+    private final pickelhaube pickelhaubemodel;
+    private final wizardhat wizardhatmodel;
+
+    public CosmeticHeadRenderer(EntityModelSet modelSet) {
+        this.dragonModel = new dragonskull(modelSet.bakeLayer(dragonskull.LAYER_LOCATION));
+        this.christmashatmodel = new christmas_hat(modelSet.bakeLayer(christmas_hat.LAYER_LOCATION));
+        this.captainhatmodel = new captainhat(modelSet.bakeLayer(captainhat.LAYER_LOCATION));
+        this.cowboyhatmodel = new cowboyhat(modelSet.bakeLayer(cowboyhat.LAYER_LOCATION));
+        this.crownmodel = new crown(modelSet.bakeLayer(crown.LAYER_LOCATION));
+        this.hornsmodel = new horns(modelSet.bakeLayer(horns.LAYER_LOCATION));
+        this.sombreromodel = new sombrero(modelSet.bakeLayer(sombrero.LAYER_LOCATION));
+        this.pickelhaubemodel = new pickelhaube(modelSet.bakeLayer(pickelhaube.LAYER_LOCATION));
+        this.wizardhatmodel = new wizardhat(modelSet.bakeLayer(wizardhat.LAYER_LOCATION));
+    }
+
+    @Override
+    public <T extends LivingEntity, M extends EntityModel<T>> void render(
+            ItemStack stack, SlotContext slotContext, PoseStack matrixStack,
+            RenderLayerParent<T, M> renderLayerParent, MultiBufferSource renderTypeBuffer,
+            int light, float limbSwing, float limbSwingAmount, float partialTicks,
+            float ageInTicks, float netHeadYaw, float headPitch) {
+
+        // 1. SELECTOR DINÁMICO
+        EntityModel<LivingEntity> modelToUse;
+        ResourceLocation textureToUse;
+
+        if (stack.is(ModClothes.Dragon_Skull.get())) {
+            modelToUse = (EntityModel) dragonModel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/dragon_skull.png");
+        }
+        else if (stack.is(ModClothes.Christmas_Hat.get())) {
+            modelToUse = (EntityModel) christmashatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/christmas_hat.png");
+        }
+        else if (stack.is(ModClothes.CaptainHat.get())) {
+            modelToUse = (EntityModel) captainhatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/captain_hat.png");
+        }
+        else if (stack.is(ModClothes.CowboyHat.get())) {
+            modelToUse = (EntityModel) cowboyhatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/cowboy_hat.png");
+        }
+        else if (stack.is(ModClothes.Crown.get())) {
+            modelToUse = (EntityModel) crownmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/crown.png");
+        }
+        else if (stack.is(ModClothes.Horns.get())) {
+            modelToUse = (EntityModel) hornsmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/horns.png");
+        }
+        else if (stack.is(ModClothes.Sombrero.get())) {
+            modelToUse = (EntityModel) sombreromodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/sombrero.png");
+        }
+        else if (stack.is(ModClothes.Pickelhaube.get())) {
+            modelToUse = (EntityModel) pickelhaubemodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pickelhaube.png");
+        }
+        else if (stack.is(ModClothes.Wizardhat.get())) {
+            modelToUse = (EntityModel) wizardhatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/wizardhat.png");
+        }
+        else {
+            return;
+        }
+
+
+        // --- LÓGICA DE RENDERIZADO (IGUAL PARA TODOS) ---
+        matrixStack.pushPose();
+
+        // Esto hace que el modelo siga el movimiento de la cabeza del jugador
+        ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
+
+        // Sincronizar animación
+        modelToUse.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+
+        // Dibujar el modelo
+        VertexConsumer vertexConsumer = renderTypeBuffer.getBuffer(modelToUse.renderType(textureToUse));
+
+        // CORRECCIÓN AQUÍ: Se añade el parámetro de color (0xFFFFFFFF es blanco total/sin tinte)
+        modelToUse.renderToBuffer(matrixStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+
+        matrixStack.popPose();
+    }
+}

@@ -25,6 +25,10 @@ public class dragonskull<T extends LivingEntity> extends EntityModel<T> {
 		this.bipedHead = root.getChild("bipedHead");
 	}
 
+	public ModelPart getRoot() {
+		return this.bipedHead;
+	}
+
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();

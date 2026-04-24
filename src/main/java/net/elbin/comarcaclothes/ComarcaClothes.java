@@ -1,10 +1,11 @@
 package net.elbin.comarcaclothes;
 
 import com.mojang.logging.LogUtils;
-import net.elbin.comarcaclothes.client.model.dragonskull;
-import net.elbin.comarcaclothes.client.renderer.DragonSkullRenderer;
+import net.elbin.comarcaclothes.client.model.*;
+import net.elbin.comarcaclothes.client.renderer.CosmeticBackRenderer;
+import net.elbin.comarcaclothes.client.renderer.CosmeticHeadRenderer;
 import net.elbin.comarcaclothes.clothes.ModClothes;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.elbin.comarcaclothes.tab.ClothesCreativeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -31,6 +32,8 @@ public class ComarcaClothes {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
 
+        ClothesCreativeTabs.register(modEventBus);
+
         // 2. Registro de tus ítems (ModClothes)
         ModClothes.register(modEventBus);
 
@@ -43,10 +46,6 @@ public class ComarcaClothes {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            // Asegúrate que el nombre del ítem coincida con el de tu clase ModClothes
-            event.accept(ModClothes.Dragon_Skull);
-        }
     }
 
     @SubscribeEvent
@@ -61,20 +60,38 @@ public class ComarcaClothes {
 
         @SubscribeEvent
         public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-            // Registra la geometría del cráneo de dragón
+            // Registras la geometría de CADA ítem nuevo aquí
             event.registerLayerDefinition(dragonskull.LAYER_LOCATION, dragonskull::createBodyLayer);
+            event.registerLayerDefinition(christmas_hat.LAYER_LOCATION, christmas_hat::createBodyLayer);
+            event.registerLayerDefinition(captainhat.LAYER_LOCATION, captainhat::createBodyLayer);
+            event.registerLayerDefinition(cowboyhat.LAYER_LOCATION, cowboyhat::createBodyLayer);
+            event.registerLayerDefinition(crown.LAYER_LOCATION, crown::createBodyLayer);
+            event.registerLayerDefinition(quiver.LAYER_LOCATION, quiver::createBodyLayer);
+            event.registerLayerDefinition(wings.LAYER_LOCATION, wings::createBodyLayer);
+            event.registerLayerDefinition(horns.LAYER_LOCATION, horns::createBodyLayer);
+            event.registerLayerDefinition(sombrero.LAYER_LOCATION, sombrero::createBodyLayer);
+            event.registerLayerDefinition(pickelhaube.LAYER_LOCATION, pickelhaube::createBodyLayer);
+            event.registerLayerDefinition(wizardhat.LAYER_LOCATION, wizardhat::createBodyLayer);
         }
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // 1. Obtenemos el set de modelos desde Minecraft
             net.minecraft.client.model.geom.EntityModelSet modelSet =
                     net.minecraft.client.Minecraft.getInstance().getEntityModels();
 
-            // 2. Vinculamos el ítem pasando el modelSet al constructor
             event.enqueueWork(() -> {
-                CuriosRendererRegistry.register(ModClothes.Dragon_Skull.get(),
-                        () -> new DragonSkullRenderer(modelSet));
+                // Registras TODOS tus ítems para que usen el MISMO renderer
+                CuriosRendererRegistry.register(ModClothes.Dragon_Skull.get(), () -> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Christmas_Hat.get(), () -> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.CaptainHat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.CowboyHat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Crown.get(),()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Quiver.get(),()-> new CosmeticBackRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Wings.get(),()-> new CosmeticBackRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Horns.get(),()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Sombrero.get(),()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Pickelhaube.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Wizardhat.get(), ()-> new CosmeticHeadRenderer(modelSet));
             });
         }
     }

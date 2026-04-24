@@ -63,6 +63,8 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 
             systemProperty 'mixin.config', 'comarcaclothes.mixins.json'
+            systemProperty 'mixin.debug.export', 'true'
+            systemProperty 'mixin.debug.verbose', 'true'
 
         }
 
@@ -112,6 +114,7 @@ neoForge {
         // multi mod projects should define one per mod
         "${mod_id}" {
             sourceSet(sourceSets.main)
+
         }
     }
 }
