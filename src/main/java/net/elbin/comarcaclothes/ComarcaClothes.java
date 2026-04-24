@@ -3,6 +3,7 @@ package net.elbin.comarcaclothes;
 import com.mojang.logging.LogUtils;
 import net.elbin.comarcaclothes.client.model.*;
 import net.elbin.comarcaclothes.client.renderer.CosmeticBackRenderer;
+import net.elbin.comarcaclothes.client.renderer.CosmeticBodyRenderer;
 import net.elbin.comarcaclothes.client.renderer.CosmeticHeadRenderer;
 import net.elbin.comarcaclothes.clothes.ModClothes;
 import net.elbin.comarcaclothes.tab.ClothesCreativeTabs;
@@ -72,6 +73,13 @@ public class ComarcaClothes {
             event.registerLayerDefinition(sombrero.LAYER_LOCATION, sombrero::createBodyLayer);
             event.registerLayerDefinition(pickelhaube.LAYER_LOCATION, pickelhaube::createBodyLayer);
             event.registerLayerDefinition(wizardhat.LAYER_LOCATION, wizardhat::createBodyLayer);
+            event.registerLayerDefinition(piratehat.LAYER_LOCATION, piratehat::createBodyLayer);
+            event.registerLayerDefinition(tophat.LAYER_LOCATION, tophat::createBodyLayer);
+            event.registerLayerDefinition(doubletophat.LAYER_LOCATION, doubletophat::createBodyLayer);
+            event.registerLayerDefinition(kasahat.LAYER_LOCATION, kasahat::createBodyLayer);
+            event.registerLayerDefinition(pumpkinhat.LAYER_LOCATION, pumpkinhat::createBodyLayer);
+            event.registerLayerDefinition(katana.LAYER_LOCATION, katana::createBodyLayer);
+            event.registerLayerDefinition(bodydef.LAYER_LOCATION, bodydef::createBodyLayer);
         }
 
         @SubscribeEvent
@@ -92,6 +100,13 @@ public class ComarcaClothes {
                 CuriosRendererRegistry.register(ModClothes.Sombrero.get(),()-> new CosmeticHeadRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Pickelhaube.get(), ()-> new CosmeticHeadRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Wizardhat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Piratehat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Tophat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Doubletophat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Kasahat.get(),()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Pumpkinhat.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Katana.get(), ()-> new CosmeticBackRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Bluetoga.get(), ()-> new CosmeticBodyRenderer(modelSet));
             });
         }
     }

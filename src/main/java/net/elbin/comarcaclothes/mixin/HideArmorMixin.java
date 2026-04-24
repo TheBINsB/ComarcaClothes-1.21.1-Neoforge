@@ -41,5 +41,18 @@ public abstract class HideArmorMixin {
                 ci.cancel();
             }
         }
+
+        // --- LÓGICA PARA EL TORSO (PECHERA) ---
+        if (armorSlot == EquipmentSlot.CHEST) {
+            // Buscamos en Curios si el jugador tiene equipada la Blue Toga u otro ítem que oculte el torso
+            boolean hasChestCosmetic = CuriosApi.getCuriosInventory(entity)
+                    .map(inv -> inv.findFirstCurio(stack -> stack.is(ModTags.Items.HIDE_CHESTPLATE)).isPresent())
+                    .orElse(false);
+
+            if (hasChestCosmetic) {
+                ci.cancel();
+                return;
+            }
+        }
     }
 }

@@ -1,11 +1,20 @@
 {
+  "item.creativetab.comarcaclothes.clothes": "Comarca Clothes",
   "item.comarcaclothes.dragonskull": "Dragon Skull",
   "item.comarcaclothes.christmas_hat": "Christmas Hat",
   "item.comarcaclothes.captainhat": "Captain Hat",
-  "item.creativetab.comarcaclothes.clothes": "Comarca Clothes",
   "item.comarcaclothes.cowboyhat": "Cowboy Hat",
   "item.comarcaclothes.crown": "Crown",
   "item.comarcaclothes.horns": "Horns",
   "item.comarcaclothes.sombrero": "Sombrero",
-  "item.comarcaclothes.pickelhaube": "Pichelhaube"
+  "item.comarcaclothes.pickelhaube": "Pickelhaube",
+  "item.comarcaclothes.wizardhat": "Wizard Hat",
+  "item.comarcaclothes.piratehat": "Pirate Hat",
+  "item.comarcaclothes.tophat": "Top Hat",
+  "item.comarcaclothes.doubletophat": "Double Top Hat",
+  "item.comarcaclothes.kasahat": "Kasa hat",
+  "item.comarcaclothes.pumpkinhat": "Pumpkin",
+  "item.comarcaclothes.quiver": "Quiver",
+  "item.comarcaclothes.wings": "Wings",
+  "item.comarcaclothes.katana": "Katana"
 }

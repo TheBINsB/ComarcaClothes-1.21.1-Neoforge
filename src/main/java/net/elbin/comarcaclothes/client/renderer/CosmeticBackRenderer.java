@@ -2,6 +2,7 @@ package net.elbin.comarcaclothes.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.elbin.comarcaclothes.client.model.katana;
 import net.elbin.comarcaclothes.client.model.quiver;
 import net.elbin.comarcaclothes.client.model.wings;
 import net.elbin.comarcaclothes.clothes.ModClothes;
@@ -19,10 +20,12 @@ import top.theillusivec4.curios.api.client.ICurioRenderer;
 public class CosmeticBackRenderer implements ICurioRenderer {
     private final quiver quiverModel;
     private final wings wingsModel;
+    private final katana katanamodel;
 
     public CosmeticBackRenderer(EntityModelSet modelSet) {
         this.quiverModel = new quiver(modelSet.bakeLayer(quiver.LAYER_LOCATION));
         this.wingsModel = new wings(modelSet.bakeLayer(wings.LAYER_LOCATION));
+        this.katanamodel = new katana(modelSet.bakeLayer(katana.LAYER_LOCATION));
     }
 
     @Override
@@ -44,6 +47,10 @@ public class CosmeticBackRenderer implements ICurioRenderer {
             modelToUse = (EntityModel) wingsModel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/wings.png");
         }
+        else if (stack.is(ModClothes.Katana.get())) {
+            modelToUse = (EntityModel) katanamodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/katana.png");
+        }
         else {
             return;
         }
@@ -51,7 +58,7 @@ public class CosmeticBackRenderer implements ICurioRenderer {
         matrixStack.pushPose();
 
         // Ajuste manual por si el modelo aparece dentro del cuerpo (ajustar según Blockbench)
-        // matrixStack.translate(0, 0, 0.25);
+        matrixStack.translate(0, 0, 0.08);
 
         ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
         ICurioRenderer.rotateIfSneaking(matrixStack, slotContext.entity());

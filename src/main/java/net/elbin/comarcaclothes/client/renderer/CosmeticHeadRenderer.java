@@ -26,6 +26,11 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
     private final sombrero sombreromodel;
     private final pickelhaube pickelhaubemodel;
     private final wizardhat wizardhatmodel;
+    private final piratehat piratehatmodel;
+    private final tophat tophatmodel;
+    private final doubletophat doubletophatmodel;
+    private final kasahat kasahatmodel;
+    private final pumpkinhat pumpkinhatmodel;
 
     public CosmeticHeadRenderer(EntityModelSet modelSet) {
         this.dragonModel = new dragonskull(modelSet.bakeLayer(dragonskull.LAYER_LOCATION));
@@ -37,6 +42,11 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         this.sombreromodel = new sombrero(modelSet.bakeLayer(sombrero.LAYER_LOCATION));
         this.pickelhaubemodel = new pickelhaube(modelSet.bakeLayer(pickelhaube.LAYER_LOCATION));
         this.wizardhatmodel = new wizardhat(modelSet.bakeLayer(wizardhat.LAYER_LOCATION));
+        this.piratehatmodel = new piratehat(modelSet.bakeLayer(piratehat.LAYER_LOCATION));
+        this.tophatmodel = new tophat(modelSet.bakeLayer(tophat.LAYER_LOCATION));
+        this.doubletophatmodel = new doubletophat(modelSet.bakeLayer(doubletophat.LAYER_LOCATION));
+        this.kasahatmodel = new kasahat(modelSet.bakeLayer(kasahat.LAYER_LOCATION));
+        this.pumpkinhatmodel = new pumpkinhat(modelSet.bakeLayer(pumpkinhat.LAYER_LOCATION));
     }
 
     @Override
@@ -84,7 +94,27 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         }
         else if (stack.is(ModClothes.Wizardhat.get())) {
             modelToUse = (EntityModel) wizardhatmodel;
-            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/wizardhat.png");
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/wizard_hat.png");
+        }
+        else if (stack.is(ModClothes.Piratehat.get())) {
+            modelToUse = (EntityModel) piratehatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pirate_hat.png");
+        }
+        else if (stack.is(ModClothes.Tophat.get())) {
+            modelToUse = (EntityModel) tophatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/top_hat.png");
+        }
+        else if (stack.is(ModClothes.Doubletophat.get())) {
+            modelToUse = (EntityModel) doubletophatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/top_hat.png");
+        }
+        else if (stack.is(ModClothes.Kasahat.get())) {
+            modelToUse = (EntityModel) kasahatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/kasahat.png");
+        }
+        else if (stack.is(ModClothes.Pumpkinhat.get())) {
+            modelToUse = (EntityModel) pumpkinhatmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pumpkin_hat.png");
         }
         else {
             return;

@@ -12,5 +12,8 @@ public class ModTags {
                 Registries.ITEM,
                 ResourceLocation.fromNamespaceAndPath("comarcaclothes", "oculta_casco")
         );
+
+        public static final TagKey<Item> HIDE_CHESTPLATE = TagKey.create(Registries.ITEM,
+                ResourceLocation.fromNamespaceAndPath(ComarcaClothes.MOD_ID, "oculta_torso"));
     }
 }

@@ -38,6 +38,21 @@ public class ModClothes {
     public static final DeferredItem<Item> Wizardhat = ITEMS.register("wizardhat",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Piratehat = ITEMS.register("piratehat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Tophat = ITEMS.register("tophat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Doubletophat = ITEMS.register("doubletophat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Kasahat = ITEMS.register("kasahat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Pumpkinhat = ITEMS.register("pumpkinhat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
     //back
 
     public static final DeferredItem<Item> Quiver = ITEMS.register("quiver",
@@ -46,7 +61,13 @@ public class ModClothes {
     public static final DeferredItem<Item> Wings = ITEMS.register("wings",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Katana = ITEMS.register("katana",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
     //torso
+
+    public static final DeferredItem<Item> Bluetoga = ITEMS.register("bluetoga",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
 
     //legs
 
