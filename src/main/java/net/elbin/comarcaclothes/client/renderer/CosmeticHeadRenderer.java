@@ -31,6 +31,12 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
     private final doubletophat doubletophatmodel;
     private final kasahat kasahatmodel;
     private final pumpkinhat pumpkinhatmodel;
+    private final mahoraga_aro mahoragaaromodel;
+    private final pto ptomodel;
+    private final gorro1 gorro1model;
+    private final choppa choppamodel;
+    private final axolotl axolotlmodel;
+    private final ribbon ribbonmodel;
 
     public CosmeticHeadRenderer(EntityModelSet modelSet) {
         this.dragonModel = new dragonskull(modelSet.bakeLayer(dragonskull.LAYER_LOCATION));
@@ -47,6 +53,12 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         this.doubletophatmodel = new doubletophat(modelSet.bakeLayer(doubletophat.LAYER_LOCATION));
         this.kasahatmodel = new kasahat(modelSet.bakeLayer(kasahat.LAYER_LOCATION));
         this.pumpkinhatmodel = new pumpkinhat(modelSet.bakeLayer(pumpkinhat.LAYER_LOCATION));
+        this.mahoragaaromodel = new mahoraga_aro(modelSet.bakeLayer(mahoraga_aro.LAYER_LOCATION));
+        this.ptomodel = new pto(modelSet.bakeLayer(pto.LAYER_LOCATION));
+        this.gorro1model = new gorro1(modelSet.bakeLayer(gorro1.LAYER_LOCATION));
+        this.choppamodel = new choppa(modelSet.bakeLayer(choppa.LAYER_LOCATION));
+        this.axolotlmodel = new axolotl(modelSet.bakeLayer(axolotl.LAYER_LOCATION));
+        this.ribbonmodel = new ribbon(modelSet.bakeLayer(ribbon.LAYER_LOCATION));
     }
 
     @Override
@@ -115,6 +127,30 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         else if (stack.is(ModClothes.Pumpkinhat.get())) {
             modelToUse = (EntityModel) pumpkinhatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pumpkin_hat.png");
+        }
+        else if (stack.is(ModClothes.Mahoraga_aro.get())) {
+            modelToUse = (EntityModel) mahoragaaromodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/aro.png");
+        }
+        else if (stack.is(ModClothes.Pto.get())) {
+            modelToUse = (EntityModel) ptomodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pto.png");
+        }
+        else if (stack.is(ModClothes.Gorro1.get())) {
+            modelToUse = (EntityModel) gorro1model;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/gorro1.png");
+        }
+        else if (stack.is(ModClothes.Choppa.get())) {
+            modelToUse = (EntityModel) choppamodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/choppa.png");
+        }
+        else if (stack.is(ModClothes.Axolotl.get())) {
+            modelToUse = (EntityModel) axolotlmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/axolotl.png");
+        }
+        else if (stack.is(ModClothes.Ribbon.get())) {
+            modelToUse = (EntityModel) ribbonmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/ribbon.png");
         }
         else {
             return;

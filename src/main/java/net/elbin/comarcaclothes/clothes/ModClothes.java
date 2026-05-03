@@ -53,6 +53,24 @@ public class ModClothes {
     public static final DeferredItem<Item> Pumpkinhat = ITEMS.register("pumpkinhat",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Mahoraga_aro = ITEMS.register("mahoraga_aro",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Pto = ITEMS.register("pto",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Gorro1 = ITEMS.register("gorro1",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Choppa = ITEMS.register("choppa",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Axolotl = ITEMS.register("axolotl",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Ribbon = ITEMS.register("ribbon",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
     //back
 
     public static final DeferredItem<Item> Quiver = ITEMS.register("quiver",
@@ -67,6 +85,9 @@ public class ModClothes {
     //torso
 
     public static final DeferredItem<Item> Bluetoga = ITEMS.register("bluetoga",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Greenshirt = ITEMS.register("greenshirt",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
     //legs

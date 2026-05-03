@@ -3,6 +3,7 @@ package net.elbin.comarcaclothes.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.elbin.comarcaclothes.client.model.bodydef;
+import net.elbin.comarcaclothes.clothes.ModClothes;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -44,7 +45,16 @@ public class CosmeticBodyRenderer implements ICurioRenderer {
         }
 
         LivingEntity entity = slotContext.entity();
-        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/blue_toga.png");
+        ResourceLocation texture;
+        if (stack.is(ModClothes.Bluetoga.get())) {
+            texture = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/blue_toga.png");
+        }
+        else if (stack.is(ModClothes.Greenshirt.get())) {
+            texture = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/greenshirt.png");
+        }
+        else {
+            return;
+        }
 
         matrixStack.pushPose();
 
@@ -54,9 +64,6 @@ public class CosmeticBodyRenderer implements ICurioRenderer {
         this.bodyModel.bipedLeftArm.copyFrom(playerModel.leftArm);
         this.bodyModel.bipedRightArm.copyFrom(playerModel.rightArm);
 
-        // 3. Ajustes de agachado (Sneak)
-        ICurioRenderer.translateIfSneaking(matrixStack, entity);
-        ICurioRenderer.rotateIfSneaking(matrixStack, entity);
 
         // 4. Renderizado
         VertexConsumer vertexConsumer = renderTypeBuffer.getBuffer(RenderType.entityCutoutNoCull(texture));

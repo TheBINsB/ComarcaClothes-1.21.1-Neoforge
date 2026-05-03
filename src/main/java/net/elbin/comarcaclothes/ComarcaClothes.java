@@ -56,7 +56,7 @@ public class ComarcaClothes {
     // --- SECCIÓN DE CLIENTE (OPCIÓN 1) ---
     // Esta clase interna maneja todo lo visual.
     // Al tener 'value = Dist.CLIENT', NeoForge la ignorará en servidores.
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID)
     public static class ClientEvents {
 
         @SubscribeEvent
@@ -80,6 +80,12 @@ public class ComarcaClothes {
             event.registerLayerDefinition(pumpkinhat.LAYER_LOCATION, pumpkinhat::createBodyLayer);
             event.registerLayerDefinition(katana.LAYER_LOCATION, katana::createBodyLayer);
             event.registerLayerDefinition(bodydef.LAYER_LOCATION, bodydef::createBodyLayer);
+            event.registerLayerDefinition(mahoraga_aro.LAYER_LOCATION, mahoraga_aro::createBodyLayer);
+            event.registerLayerDefinition(pto.LAYER_LOCATION, pto::createBodyLayer);
+            event.registerLayerDefinition(gorro1.LAYER_LOCATION, gorro1::createBodyLayer);
+            event.registerLayerDefinition(choppa.LAYER_LOCATION, choppa::createBodyLayer);
+            event.registerLayerDefinition(axolotl.LAYER_LOCATION, axolotl::createBodyLayer);
+            event.registerLayerDefinition(ribbon.LAYER_LOCATION, ribbon::createBodyLayer);
         }
 
         @SubscribeEvent
@@ -107,6 +113,13 @@ public class ComarcaClothes {
                 CuriosRendererRegistry.register(ModClothes.Pumpkinhat.get(), ()-> new CosmeticHeadRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Katana.get(), ()-> new CosmeticBackRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Bluetoga.get(), ()-> new CosmeticBodyRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Mahoraga_aro.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Pto.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Gorro1.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Greenshirt.get(), ()-> new CosmeticBodyRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Choppa.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Axolotl.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Ribbon.get(), ()-> new CosmeticHeadRenderer(modelSet));
             });
         }
     }

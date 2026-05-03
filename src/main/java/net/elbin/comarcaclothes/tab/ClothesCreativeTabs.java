@@ -37,6 +37,13 @@ public class ClothesCreativeTabs {
                       output.accept(ModClothes.Pumpkinhat);
                       output.accept(ModClothes.Katana);
                       output.accept(ModClothes.Bluetoga);
+                      output.accept(ModClothes.Mahoraga_aro);
+                      output.accept(ModClothes.Pto);
+                      output.accept(ModClothes.Gorro1);
+                      output.accept(ModClothes.Greenshirt);
+                      output.accept(ModClothes.Choppa);
+                      output.accept(ModClothes.Axolotl);
+                      output.accept(ModClothes.Ribbon);
 
                     }).build());
 
