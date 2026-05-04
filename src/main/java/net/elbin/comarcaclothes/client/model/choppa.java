@@ -33,10 +33,12 @@ public class choppa<T extends LivingEntity> extends EntityModel<T> {
 
 		PartDefinition bipedHead = partdefinition.addOrReplaceChild("bipedHead", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		PartDefinition armorHead = bipedHead.addOrReplaceChild("armorHead", CubeListBuilder.create().texOffs(0, 0).addBox(-4.5326F, -4.6675F, -3.6147F, 9.0F, 8.0F, 8.0F, new CubeDeformation(0.51F))
-				.texOffs(0, 30).addBox(4.6F, -5.3F, 1.0F, 9.0F, 9.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 30).mirror().addBox(-13.4651F, -5.3F, 1.0F, 9.0F, 9.0F, 0.0F, new CubeDeformation(0.0F)).mirror(false)
-				.texOffs(0, 16).addBox(-6.0F, 3.7F, -5.0F, 12.0F, 1.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.0674F, -10.0325F, -0.3853F));
+		PartDefinition armorHead = bipedHead.addOrReplaceChild("armorHead", CubeListBuilder.create()
+						.texOffs(0, 0).addBox(-4.5581F, -5.1506F, -4.336F, 9.0F, 8.0F, 8.0F, new CubeDeformation(0.51F))
+						.texOffs(0, 30).addBox(4.5744F, -5.7831F, 0.2787F, 9.0F, 9.0F, 0.0F, new CubeDeformation(0.0F))
+						.texOffs(0, 30).mirror().addBox(-13.4907F, -5.7831F, 0.2787F, 9.0F, 9.0F, 0.0F, new CubeDeformation(0.0F)).mirror(false)
+						.texOffs(0, 16).addBox(-6.0256F, 3.2169F, -5.7213F, 12.0F, 1.0F, 11.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(-0.0419F, -10.5494F, 0.336F));
 
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
@@ -56,5 +58,9 @@ public class choppa<T extends LivingEntity> extends EntityModel<T> {
 
 	public ModelPart getRoot() {
 		return this.root;
+	}
+
+	public ModelPart getHead() {
+		return this.bipedHead;
 	}
 }

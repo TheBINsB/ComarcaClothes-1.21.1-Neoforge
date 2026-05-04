@@ -86,6 +86,10 @@ public class ComarcaClothes {
             event.registerLayerDefinition(choppa.LAYER_LOCATION, choppa::createBodyLayer);
             event.registerLayerDefinition(axolotl.LAYER_LOCATION, axolotl::createBodyLayer);
             event.registerLayerDefinition(ribbon.LAYER_LOCATION, ribbon::createBodyLayer);
+            event.registerLayerDefinition(turtle.LAYER_LOCATION, turtle::createBodyLayer);
+            event.registerLayerDefinition(swamp.LAYER_LOCATION, swamp::createBodyLayer);
+            event.registerLayerDefinition(librarian.LAYER_LOCATION, librarian::createBodyLayer);
+            event.registerLayerDefinition(cartographer.LAYER_LOCATION, cartographer::createBodyLayer);
         }
 
         @SubscribeEvent
@@ -120,6 +124,10 @@ public class ComarcaClothes {
                 CuriosRendererRegistry.register(ModClothes.Choppa.get(), ()-> new CosmeticHeadRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Axolotl.get(), ()-> new CosmeticHeadRenderer(modelSet));
                 CuriosRendererRegistry.register(ModClothes.Ribbon.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Turtle.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Swamp.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Librarian.get(), ()-> new CosmeticHeadRenderer(modelSet));
+                CuriosRendererRegistry.register(ModClothes.Cartographer.get(), ()-> new CosmeticHeadRenderer(modelSet));
             });
         }
     }

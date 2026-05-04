@@ -60,4 +60,8 @@ public class dragonskull<T extends LivingEntity> extends EntityModel<T> {
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
 		bipedHead.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 	}
+
+	public ModelPart getHead() {
+		return this.bipedHead;
+	}
 }

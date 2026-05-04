@@ -44,6 +44,10 @@ public class ClothesCreativeTabs {
                       output.accept(ModClothes.Choppa);
                       output.accept(ModClothes.Axolotl);
                       output.accept(ModClothes.Ribbon);
+                      output.accept(ModClothes.Turtle);
+                      output.accept(ModClothes.Swamp);
+                      output.accept(ModClothes.Librarian);
+                      output.accept(ModClothes.Cartographer);
 
                     }).build());
 

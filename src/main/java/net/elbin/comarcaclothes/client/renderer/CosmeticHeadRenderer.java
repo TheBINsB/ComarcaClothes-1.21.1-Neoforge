@@ -5,7 +5,9 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.elbin.comarcaclothes.client.model.*;
 import net.elbin.comarcaclothes.clothes.ModClothes;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -15,7 +17,9 @@ import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
+
 public class CosmeticHeadRenderer implements ICurioRenderer {
+
     // Definimos los modelos que vamos a usar
     private final dragonskull dragonModel;
     private final christmas_hat christmashatmodel;
@@ -37,6 +41,10 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
     private final choppa choppamodel;
     private final axolotl axolotlmodel;
     private final ribbon ribbonmodel;
+    private final turtle turtlemodel;
+    private final swamp swampmodel;
+    private final librarian librarianmodel;
+    private final cartographer cartographermodel;
 
     public CosmeticHeadRenderer(EntityModelSet modelSet) {
         this.dragonModel = new dragonskull(modelSet.bakeLayer(dragonskull.LAYER_LOCATION));
@@ -59,98 +67,155 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         this.choppamodel = new choppa(modelSet.bakeLayer(choppa.LAYER_LOCATION));
         this.axolotlmodel = new axolotl(modelSet.bakeLayer(axolotl.LAYER_LOCATION));
         this.ribbonmodel = new ribbon(modelSet.bakeLayer(ribbon.LAYER_LOCATION));
+        this.turtlemodel = new turtle(modelSet.bakeLayer(turtle.LAYER_LOCATION));
+        this.swampmodel = new swamp(modelSet.bakeLayer(swamp.LAYER_LOCATION));
+        this.librarianmodel = new librarian(modelSet.bakeLayer(librarian.LAYER_LOCATION));
+        this.cartographermodel = new cartographer(modelSet.bakeLayer(cartographer.LAYER_LOCATION));
     }
 
     @Override
     public <T extends LivingEntity, M extends EntityModel<T>> void render(
-            ItemStack stack, SlotContext slotContext, PoseStack matrixStack,
-            RenderLayerParent<T, M> renderLayerParent, MultiBufferSource renderTypeBuffer,
-            int light, float limbSwing, float limbSwingAmount, float partialTicks,
-            float ageInTicks, float netHeadYaw, float headPitch) {
+            ItemStack stack,
+            SlotContext slotContext,
+            PoseStack matrixStack,
+            RenderLayerParent<T, M> renderLayerParent,
+            MultiBufferSource renderTypeBuffer,
+            int light,
+            float limbSwing,
+            float limbSwingAmount,
+            float partialTicks,
+            float ageInTicks,
+            float netHeadYaw,
+            float headPitch) {
+
+        if (!(renderLayerParent.getModel() instanceof HumanoidModel<?> playerModel)) {
+            return;
+        }
 
         // 1. SELECTOR DINÁMICO
         EntityModel<LivingEntity> modelToUse;
         ResourceLocation textureToUse;
+        ModelPart modelPartToSync = null;
 
         if (stack.is(ModClothes.Dragon_Skull.get())) {
             modelToUse = (EntityModel) dragonModel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/dragon_skull.png");
+            modelPartToSync = dragonModel.getHead();
         }
         else if (stack.is(ModClothes.Christmas_Hat.get())) {
             modelToUse = (EntityModel) christmashatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/christmas_hat.png");
+            modelPartToSync = christmashatmodel.getHead();
         }
         else if (stack.is(ModClothes.CaptainHat.get())) {
             modelToUse = (EntityModel) captainhatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/captain_hat.png");
+            modelPartToSync = captainhatmodel.getHead();
         }
         else if (stack.is(ModClothes.CowboyHat.get())) {
             modelToUse = (EntityModel) cowboyhatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/cowboy_hat.png");
+            modelPartToSync = cowboyhatmodel.getHead();
         }
         else if (stack.is(ModClothes.Crown.get())) {
             modelToUse = (EntityModel) crownmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/crown.png");
+            modelPartToSync = crownmodel.getHead();
         }
         else if (stack.is(ModClothes.Horns.get())) {
             modelToUse = (EntityModel) hornsmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/horns.png");
+            modelPartToSync = hornsmodel.getHead();
         }
         else if (stack.is(ModClothes.Sombrero.get())) {
             modelToUse = (EntityModel) sombreromodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/sombrero.png");
+            modelPartToSync = sombreromodel.getHead();
         }
         else if (stack.is(ModClothes.Pickelhaube.get())) {
             modelToUse = (EntityModel) pickelhaubemodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pickelhaube.png");
+            modelPartToSync = pickelhaubemodel.getHead();
         }
         else if (stack.is(ModClothes.Wizardhat.get())) {
             modelToUse = (EntityModel) wizardhatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/wizard_hat.png");
+            modelPartToSync = wizardhatmodel.getHead();
         }
         else if (stack.is(ModClothes.Piratehat.get())) {
             modelToUse = (EntityModel) piratehatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pirate_hat.png");
+            modelPartToSync = piratehatmodel.getHead();
         }
         else if (stack.is(ModClothes.Tophat.get())) {
             modelToUse = (EntityModel) tophatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/top_hat.png");
+            modelPartToSync = tophatmodel.getHead();
         }
         else if (stack.is(ModClothes.Doubletophat.get())) {
             modelToUse = (EntityModel) doubletophatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/top_hat.png");
+            modelPartToSync = doubletophatmodel.getHead();
         }
         else if (stack.is(ModClothes.Kasahat.get())) {
             modelToUse = (EntityModel) kasahatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/kasahat.png");
+            modelPartToSync = kasahatmodel.getHead();
         }
         else if (stack.is(ModClothes.Pumpkinhat.get())) {
             modelToUse = (EntityModel) pumpkinhatmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pumpkin_hat.png");
+            modelPartToSync = pumpkinhatmodel.getHead();
         }
         else if (stack.is(ModClothes.Mahoraga_aro.get())) {
             modelToUse = (EntityModel) mahoragaaromodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/aro.png");
+            modelPartToSync = mahoragaaromodel.getHead();
         }
         else if (stack.is(ModClothes.Pto.get())) {
             modelToUse = (EntityModel) ptomodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/pto.png");
+            modelPartToSync = ptomodel.getHead();
         }
         else if (stack.is(ModClothes.Gorro1.get())) {
             modelToUse = (EntityModel) gorro1model;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/gorro1.png");
+            modelPartToSync = gorro1model.getHead();
         }
         else if (stack.is(ModClothes.Choppa.get())) {
             modelToUse = (EntityModel) choppamodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/choppa.png");
+            modelPartToSync = choppamodel.getHead();
         }
         else if (stack.is(ModClothes.Axolotl.get())) {
             modelToUse = (EntityModel) axolotlmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/axolotl.png");
+            modelPartToSync = axolotlmodel.getHead();
         }
         else if (stack.is(ModClothes.Ribbon.get())) {
             modelToUse = (EntityModel) ribbonmodel;
             textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/ribbon.png");
+            modelPartToSync = ribbonmodel.getHead();
+        }
+        else if (stack.is(ModClothes.Turtle.get())) {
+            modelToUse = (EntityModel) turtlemodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/turtle.png");
+            modelPartToSync = turtlemodel.getHead();
+        }
+        else if (stack.is(ModClothes.Swamp.get())) {
+            modelToUse = (EntityModel) swampmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/swamp.png");
+            modelPartToSync = swampmodel.getHead();
+        }
+        else if (stack.is(ModClothes.Librarian.get())) {
+            modelToUse = (EntityModel) librarianmodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/librarian.png");
+            modelPartToSync = librarianmodel.getHead();
+        }
+        else if (stack.is(ModClothes.Cartographer.get())) {
+            modelToUse = (EntityModel) cartographermodel;
+            textureToUse = ResourceLocation.fromNamespaceAndPath("comarcaclothes", "textures/entity/cartographer.png");
+            modelPartToSync = cartographermodel.getHead();
         }
         else {
             return;
@@ -161,15 +226,16 @@ public class CosmeticHeadRenderer implements ICurioRenderer {
         matrixStack.pushPose();
 
         // Esto hace que el modelo siga el movimiento de la cabeza del jugador
-        ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
+        //ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
+        if (modelPartToSync != null) {
+            modelPartToSync.copyFrom(playerModel.head);
+        }
 
         // Sincronizar animación
-        modelToUse.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+        //modelToUse.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
         // Dibujar el modelo
         VertexConsumer vertexConsumer = renderTypeBuffer.getBuffer(modelToUse.renderType(textureToUse));
-
-        // CORRECCIÓN AQUÍ: Se añade el parámetro de color (0xFFFFFFFF es blanco total/sin tinte)
         modelToUse.renderToBuffer(matrixStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         matrixStack.popPose();

@@ -64,4 +64,7 @@ public class pumpkinhat<T extends LivingEntity> extends EntityModel<T> {
 	public ModelPart getRoot() {
 		return this.root;
 	}
+	public ModelPart getHead() {
+		return this.bipedHead;
+	}
 }

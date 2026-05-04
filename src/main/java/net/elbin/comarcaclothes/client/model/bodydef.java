@@ -62,4 +62,5 @@ public class bodydef<T extends LivingEntity> extends EntityModel<T> {
 	}
 
 	public ModelPart getRoot() { return this.root; }
+
 }

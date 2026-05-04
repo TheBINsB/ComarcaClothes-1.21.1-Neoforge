@@ -71,6 +71,19 @@ public class ModClothes {
     public static final DeferredItem<Item> Ribbon = ITEMS.register("ribbon",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Turtle = ITEMS.register("turtle",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Swamp = ITEMS.register("swamp",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Librarian = ITEMS.register("librarian",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Cartographer = ITEMS.register("cartographer",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+
     //back
 
     public static final DeferredItem<Item> Quiver = ITEMS.register("quiver",
