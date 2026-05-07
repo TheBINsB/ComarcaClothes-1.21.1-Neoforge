@@ -3,6 +3,7 @@ package net.elbin.comarcaclothes.client.model;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.elbin.comarcaclothes.ComarcaClothes;
+import net.elbin.comarcaclothes.client.renderer.cosmetics.IBodyModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -11,7 +12,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
-public class bodydef<T extends LivingEntity> extends EntityModel<T> {
+public class bodydef<T extends LivingEntity> extends EntityModel<T> implements IBodyModel {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
 			ResourceLocation.fromNamespaceAndPath(ComarcaClothes.MOD_ID, "bodydef"), "main");
 
@@ -49,6 +50,7 @@ public class bodydef<T extends LivingEntity> extends EntityModel<T> {
 		return LayerDefinition.create(meshdefinition, 64, 32);
 	}
 
+
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		// Las rotaciones se sincronizan en el Renderer usando followBodyRotations, etc.
@@ -63,4 +65,18 @@ public class bodydef<T extends LivingEntity> extends EntityModel<T> {
 
 	public ModelPart getRoot() { return this.root; }
 
+	@Override
+	public ModelPart getBody() {
+		return this.bipedBody;
+	}
+
+	@Override
+	public ModelPart getLeftArm() {
+		return this.bipedLeftArm;
+	}
+
+	@Override
+	public ModelPart getRightArm() {
+		return this.bipedRightArm;
+	}
 }

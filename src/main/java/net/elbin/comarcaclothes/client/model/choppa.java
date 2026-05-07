@@ -6,6 +6,7 @@ package net.elbin.comarcaclothes.client.model;// Made with Blockbench 5.1.4
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.elbin.comarcaclothes.ComarcaClothes;
+import net.elbin.comarcaclothes.client.renderer.cosmetics.IHeadModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,7 +15,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
-public class choppa<T extends LivingEntity> extends EntityModel<T> {
+public class choppa<T extends LivingEntity> extends EntityModel<T> implements IHeadModel {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
 			ResourceLocation.fromNamespaceAndPath(ComarcaClothes.MOD_ID, "choppa"), "main");

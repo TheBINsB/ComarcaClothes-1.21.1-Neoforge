@@ -4,6 +4,7 @@ package net.elbin.comarcaclothes.client.model;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.elbin.comarcaclothes.ComarcaClothes;
+import net.elbin.comarcaclothes.client.renderer.cosmetics.IHeadModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,7 +13,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
-public class cowboyhat<T extends LivingEntity> extends EntityModel<T> {
+public class cowboyhat<T extends LivingEntity> extends EntityModel<T> implements IHeadModel {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
 			ResourceLocation.fromNamespaceAndPath(ComarcaClothes.MOD_ID, "unknown"), "main");
