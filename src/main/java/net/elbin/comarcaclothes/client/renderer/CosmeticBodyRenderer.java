@@ -2,7 +2,9 @@ package net.elbin.comarcaclothes.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.elbin.comarcaclothes.client.model.bodydef;
+import net.elbin.comarcaclothes.client.model.body.bodydef;
+import net.elbin.comarcaclothes.client.model.body.royal1;
+import net.elbin.comarcaclothes.client.model.body.royalpads;
 import net.elbin.comarcaclothes.client.renderer.cosmetics.IBodyModel;
 import net.elbin.comarcaclothes.clothes.ModClothes;
 import net.minecraft.client.model.EntityModel;
@@ -30,12 +32,10 @@ public class CosmeticBodyRenderer implements ICurioRenderer {
     private final Map<Item, BodyCosmetic> cosmetics = new HashMap<>();
 
     public CosmeticBodyRenderer(EntityModelSet modelSet) {
-        // Registro del bodydef actual con sus dos texturas
         register(ModClothes.Bluetoga.get(), new bodydef<>(modelSet.bakeLayer(bodydef.LAYER_LOCATION)), "blue_toga");
         register(ModClothes.Greenshirt.get(), new bodydef<>(modelSet.bakeLayer(bodydef.LAYER_LOCATION)), "greenshirt");
-
-        // EJEMPLO: Si mañana creas un modelo llamado "mochila.java"
-        // register(ModClothes.Backpack.get(), new mochila<>(modelSet.bakeLayer(mochila.LAYER_LOCATION)), "backpack_texture");
+        register(ModClothes.Royalpads.get(), new royalpads<>(modelSet.bakeLayer(royalpads.LAYER_LOCATION)), "royalpads");
+        register(ModClothes.Royal1.get(), new royal1<>(modelSet.bakeLayer(royal1.LAYER_LOCATION)), "royal1");
     }
 
     private void register(Item item, EntityModel<LivingEntity> model, String textureName) {
@@ -68,14 +68,23 @@ public class CosmeticBodyRenderer implements ICurioRenderer {
         // --- SINCRONIZACIÓN TRIPLE ---
         // Aquí es donde ocurre la magia para el cuerpo
         if (data.model() instanceof IBodyModel bodyParts) {
+            // Sincronización de torso y brazos (lo que ya tenías)
             bodyParts.getBody().copyFrom(playerModel.body);
             bodyParts.getLeftArm().copyFrom(playerModel.leftArm);
             bodyParts.getRightArm().copyFrom(playerModel.rightArm);
+
+            // NUEVO: Sincronización de piernas para ropa larga
+            if (bodyParts.getLeftLeg() != null) {
+                bodyParts.getLeftLeg().copyFrom(playerModel.leftLeg);
+            }
+            if (bodyParts.getRightLeg() != null) {
+                bodyParts.getRightLeg().copyFrom(playerModel.rightLeg);
+            }
         }
 
         // Ajustes de agachado de Curios (opcional si el copyFrom ya lo hace bien)
-        ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
-        ICurioRenderer.rotateIfSneaking(matrixStack, slotContext.entity());
+        //ICurioRenderer.translateIfSneaking(matrixStack, slotContext.entity());
+        //ICurioRenderer.rotateIfSneaking(matrixStack, slotContext.entity());
 
         // Renderizado
         VertexConsumer vertexConsumer = renderTypeBuffer.getBuffer(RenderType.entityCutoutNoCull(data.texture()));

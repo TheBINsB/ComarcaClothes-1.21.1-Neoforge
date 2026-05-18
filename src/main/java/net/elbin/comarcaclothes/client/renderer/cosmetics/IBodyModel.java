@@ -6,4 +6,8 @@ public interface IBodyModel {
     ModelPart getBody();
     ModelPart getLeftArm();
     ModelPart getRightArm();
+
+    // NUEVO: Para ropa larga
+    ModelPart getLeftLeg();
+    ModelPart getRightLeg();
 }

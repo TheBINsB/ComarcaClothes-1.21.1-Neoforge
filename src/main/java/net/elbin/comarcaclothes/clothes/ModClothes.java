@@ -80,9 +80,46 @@ public class ModClothes {
     public static final DeferredItem<Item> Librarian = ITEMS.register("librarian",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Cono = ITEMS.register("cono",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Scara = ITEMS.register("scara",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Teemohat = ITEMS.register("teemohat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Ornntrain = ITEMS.register("ornntrain",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Chefhat = ITEMS.register("chefhat",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Caja = ITEMS.register("caja",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Caja2 = ITEMS.register("caja2",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Caja3 = ITEMS.register("caja3",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Crimson = ITEMS.register("crimson",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Warped = ITEMS.register("warped",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Mushroom = ITEMS.register("mushroom",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    //face
+
     public static final DeferredItem<Item> Cartographer = ITEMS.register("cartographer",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Cigarro = ITEMS.register("cigarro",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
 
     //back
 
@@ -95,6 +132,18 @@ public class ModClothes {
     public static final DeferredItem<Item> Katana = ITEMS.register("katana",
             ()-> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> Foxtail1 = ITEMS.register("foxtail1",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Foxtail9 = ITEMS.register("foxtail9",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Backchest = ITEMS.register("backchest",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Magecape1 = ITEMS.register("magecape1",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
     //torso
 
     public static final DeferredItem<Item> Bluetoga = ITEMS.register("bluetoga",
@@ -102,6 +151,22 @@ public class ModClothes {
 
     public static final DeferredItem<Item> Greenshirt = ITEMS.register("greenshirt",
             ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Royalpads = ITEMS.register("royalpads",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Royal1 = ITEMS.register("royal1",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+
+    //belt
+
+    public static final DeferredItem<Item> Flotador = ITEMS.register("flotador",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> Tojiworm = ITEMS.register("tojiworm",
+            ()-> new Item(new Item.Properties().stacksTo(1)));
+
 
     //legs
 

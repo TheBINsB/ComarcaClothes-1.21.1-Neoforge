@@ -19,13 +19,12 @@ public class ClothesCreativeTabs {
             ()-> CreativeModeTab.builder().icon(()-> new ItemStack(ModClothes.Dragon_Skull.get()))
                     .title(Component.translatable("creativetab.comarcaclothes.clothes"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        //Head
                       output.accept(ModClothes.Dragon_Skull);
                       output.accept(ModClothes.Christmas_Hat);
                       output.accept(ModClothes.CaptainHat);
                       output.accept(ModClothes.CowboyHat);
                       output.accept(ModClothes.Crown);
-                      output.accept(ModClothes.Quiver);
-                      output.accept(ModClothes.Wings);
                       output.accept(ModClothes.Horns);
                       output.accept(ModClothes.Sombrero);
                       output.accept(ModClothes.Pickelhaube);
@@ -35,19 +34,49 @@ public class ClothesCreativeTabs {
                       output.accept(ModClothes.Doubletophat);
                       output.accept(ModClothes.Kasahat);
                       output.accept(ModClothes.Pumpkinhat);
-                      output.accept(ModClothes.Katana);
-                      output.accept(ModClothes.Bluetoga);
                       output.accept(ModClothes.Mahoraga_aro);
                       output.accept(ModClothes.Pto);
                       output.accept(ModClothes.Gorro1);
-                      output.accept(ModClothes.Greenshirt);
                       output.accept(ModClothes.Choppa);
                       output.accept(ModClothes.Axolotl);
                       output.accept(ModClothes.Ribbon);
                       output.accept(ModClothes.Turtle);
                       output.accept(ModClothes.Swamp);
                       output.accept(ModClothes.Librarian);
+                      output.accept(ModClothes.Cono);
+                      output.accept(ModClothes.Scara);
+                      output.accept(ModClothes.Teemohat);
+                      output.accept(ModClothes.Ornntrain);
+                      output.accept(ModClothes.Chefhat);
+                      output.accept(ModClothes.Caja);
+                      output.accept(ModClothes.Caja2);
+                      output.accept(ModClothes.Caja3);
+                      output.accept(ModClothes.Crimson);
+                      output.accept(ModClothes.Warped);
+                      output.accept(ModClothes.Mushroom);
+
+                      //back
+                      output.accept(ModClothes.Quiver);
+                      output.accept(ModClothes.Wings);
+                      output.accept(ModClothes.Katana);
+                      output.accept(ModClothes.Foxtail1);
+                      output.accept(ModClothes.Foxtail9);
+                      output.accept(ModClothes.Backchest);
+                      output.accept(ModClothes.Magecape1);
+
+                      //body
+                      output.accept(ModClothes.Bluetoga);
+                      output.accept(ModClothes.Greenshirt);
+                      output.accept(ModClothes.Royalpads);
+                      output.accept(ModClothes.Royal1);
+
+                      //face
                       output.accept(ModClothes.Cartographer);
+                      output.accept(ModClothes.Cigarro);
+
+                      //belt
+                      output.accept(ModClothes.Flotador);
+                      output.accept(ModClothes.Tojiworm);
 
                     }).build());
 

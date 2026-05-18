@@ -2,9 +2,7 @@ package net.elbin.comarcaclothes.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.elbin.comarcaclothes.client.model.katana;
-import net.elbin.comarcaclothes.client.model.quiver;
-import net.elbin.comarcaclothes.client.model.wings;
+import net.elbin.comarcaclothes.client.model.back.*;
 import net.elbin.comarcaclothes.client.renderer.cosmetics.IBackModel;
 import net.elbin.comarcaclothes.clothes.ModClothes;
 import net.minecraft.client.model.EntityModel;
@@ -32,9 +30,13 @@ public class CosmeticBackRenderer implements ICurioRenderer {
 
     public CosmeticBackRenderer(EntityModelSet modelSet) {
         // Registro de los modelos de espalda
-        register(ModClothes.Quiver.get(), new quiver(modelSet.bakeLayer(quiver.LAYER_LOCATION)), "arrow_quiver");
-        register(ModClothes.Wings.get(), new wings(modelSet.bakeLayer(wings.LAYER_LOCATION)), "wings");
-        register(ModClothes.Katana.get(), new katana(modelSet.bakeLayer(katana.LAYER_LOCATION)), "katana");
+        register(ModClothes.Quiver.get(), new quiver<>(modelSet.bakeLayer(quiver.LAYER_LOCATION)), "arrow_quiver");
+        register(ModClothes.Wings.get(), new wings<>(modelSet.bakeLayer(wings.LAYER_LOCATION)), "wings");
+        register(ModClothes.Katana.get(), new katana<>(modelSet.bakeLayer(katana.LAYER_LOCATION)), "katana");
+        register(ModClothes.Foxtail1.get(), new foxtail1<>(modelSet.bakeLayer(foxtail1.LAYER_LOCATION)), "foxtail");
+        register(ModClothes.Foxtail9.get(), new foxtail9<>(modelSet.bakeLayer(foxtail9.LAYER_LOCATION)), "foxtail");
+        register(ModClothes.Backchest.get(), new backchest<>(modelSet.bakeLayer(backchest.LAYER_LOCATION)), "backchest");
+        register(ModClothes.Magecape1.get(), new magecape1<>(modelSet.bakeLayer(magecape1.LAYER_LOCATION)), "magecape1");
     }
 
     private void register(Item item, EntityModel<LivingEntity> model, String textureName) {
@@ -64,6 +66,8 @@ public class CosmeticBackRenderer implements ICurioRenderer {
         // 2. AJUSTE DE PROFUNDIDAD
         // Ese 0.08 que tenías es vital para que no haya Z-Fighting con la espalda
         matrixStack.translate(0, 0, 0.08);
+
+        data.model().setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
         // 3. RENDERIZADO
         VertexConsumer vertexConsumer = renderTypeBuffer.getBuffer(RenderType.entityCutoutNoCull(data.texture()));
